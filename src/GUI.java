@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 public class GUI  {
     private final int height = 700;
@@ -7,13 +8,16 @@ public class GUI  {
 
     private final int cardHeight = 200;
     private final int cardWidth = 200;
-    public GUI() {
-        LetterShape letterShape = new LetterShape('A');
-        letterShape.setPreferredSize(new Dimension(cardWidth, cardHeight));
+    public GUI(List<Object> shapes) {
+
         JFrame frame = new JFrame("Raven");
+        for (int i = 0; i < shapes.size(); i++) {
+            frame.add((JComponent) shapes.get(i));
+        }
+
+        frame.setLayout(new GridLayout(3, 3));
         frame.setSize(width, height);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(letterShape);
         frame.setVisible(true);
     }
 }
